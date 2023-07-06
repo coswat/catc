@@ -1,5 +1,6 @@
 use std::env;
 use std::fs;
+use std::io::Error;
 use std::path::PathBuf;
 use std::process;
 use syntect::easy::HighlightLines;
@@ -30,12 +31,15 @@ fn main() {
 
     // Create a new Config instance or print an error and exit if invalid arguments are provided
     let config: Config = Config::new(&args).unwrap_or_else(|err: &str| {
-        println!("{}", err);
+        eprintln!("{}", err);
         process::exit(1);
     });
 
     // Read the file contents
-    let contents: String = fs::read_to_string(&config.filename).expect("unable to read file");
+    let contents: String = fs::read_to_string(&config.filename).unwrap_or_else(|err: Error| {
+        eprintln!("{}", err);
+        process::exit(1);
+    });
 
     // Output the highlighted contents
     config.output(&contents);
