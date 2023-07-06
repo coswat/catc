@@ -68,7 +68,7 @@ impl Config {
         };
 
         // Return a new Config instance
-        Ok(Config {
+        Ok(Self {
             filename,
             extension,
         })
