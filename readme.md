@@ -16,13 +16,14 @@ To use the syntax highlighter, follow these steps:
 4. Build the program by running the following command: 
 
 ```bash 
-cargo build --release
+$ cargo build --release
+$ mv target/release/catc /usr/local/bin/
 ```
 
 5. After a successful build, you can run the program with the following command:
 
 ```bash
-cargo run <filename>
+$ catc <filename>
 ```
 
 Replace `<filename>` with the path to the file you want to highlight.
@@ -36,13 +37,13 @@ Here are a few examples of how to use the syntax highlighter:
 - Highlight a HTML file:
 
 ```bash 
-cargo run test.html
+$ catc test.html
 ```
 
 - Highlight a Rust file:
 
 ```bash 
-cargo run src/main.rs
+$ catc src/main.rs
 ```
 
 ## Note
