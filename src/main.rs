@@ -56,7 +56,7 @@ impl Config {
     fn new(args: &[String]) -> Result<Self, &str> {
         // Check if a file name is provided
         if args.len() < 2 {
-            return Err("File name not passed");
+            return Err("Missing arg <filename>");
         }
 
         // Get the current directory path
@@ -87,7 +87,12 @@ impl Config {
         let ts = ThemeSet::load_defaults();
 
         // Find the syntax for the provided file extension
-        let syntax = ps.find_syntax_by_extension(&self.extension).unwrap();
+        let syntax = ps
+            .find_syntax_by_extension(&self.extension)
+            .unwrap_or_else(|| {
+                eprintln!("Error : File type not supported");
+                process::exit(1);
+            });
 
         // Create a HighlightLines instance
         let mut h = HighlightLines::new(syntax, &ts.themes["base16-ocean.dark"]);
