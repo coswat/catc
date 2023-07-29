@@ -8,22 +8,22 @@ use syntect::highlighting::{Style, ThemeSet};
 use syntect::parsing::SyntaxSet;
 use syntect::util::{as_24_bit_terminal_escaped, LinesWithEndings};
 
-/**
-/// Configures and executes a file syntax highlighter.
-///
-/// This program reads a file and performs syntax highlighting on its contents using the Syntect library.
-/// The highlighted contents are then printed to the console.
-///
-/// Like cat cli tool clone
-///
-/// Example usage:
-/// ```
-/// $ cargon run test.html
-/// ```
-///
-/// Author: coswat
-/// Date: 2023-07-06
- */
+//
+// Configures and executes a file syntax highlighter.
+//
+// This program reads a file and performs syntax highlighting on its contents using the Syntect library.
+// The highlighted contents are then printed to the console.
+//
+// Like cat cli tool clone
+//
+// Example usage:
+// ```
+// $ cargon run test.html
+// ```
+//
+// Author: coswat
+// Date: 2023-07-06
+//
 
 fn main() {
     // Collect command line arguments
