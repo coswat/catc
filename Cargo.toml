@@ -8,5 +8,4 @@ edition = "2021"
 [dependencies]
 syntect = "5.1"
 clap = { version = "4.4", features = ["derive"] }
-thiserror = "1.0"
 anyhow = "1.0"
