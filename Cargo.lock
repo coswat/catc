@@ -96,7 +96,6 @@ dependencies = [
  "anyhow",
  "clap",
  "syntect",
- "thiserror",
 ]
 
 [[package]]

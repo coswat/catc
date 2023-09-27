@@ -23,8 +23,8 @@ fn output(contents: String, ext: &str) -> anyhow::Result<()> {
     let ts = ThemeSet::load_defaults();
 
     let syntax = ps.find_syntax_by_extension(ext).unwrap_or_else(|| {
-        eprintln!("Error: Filetype not supported");
-        process::exit(1)
+        let _ = no_highlight_output(contents.clone());
+        process::exit(0);
     });
 
     let mut h = HighlightLines::new(syntax, &ts.themes["base16-ocean.dark"]);
@@ -33,6 +33,13 @@ fn output(contents: String, ext: &str) -> anyhow::Result<()> {
         let ranges = h.highlight_line(line, &ps).unwrap();
         let escaped = as_24_bit_terminal_escaped(&ranges[..], true);
         print!("{}", escaped);
+    }
+    Ok(())
+}
+
+fn no_highlight_output(contents: String) -> anyhow::Result<()> {
+    for line in contents.lines() {
+        println!("{}", line);
     }
     Ok(())
 }
